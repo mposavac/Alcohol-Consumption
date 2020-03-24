@@ -9,7 +9,7 @@ export default function RangeInputField({
   step,
   question
 }) {
-  let screen = window.innerWidth * 0.5 * 0.75 - 28;
+  let screen = window.innerWidth * 0.5 * 0.95 * 0.75 - 28;
   const translateIndicator = (input / max) * screen;
 
   return (

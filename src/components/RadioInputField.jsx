@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 export default function RadioInputField({ input, onChange, group, name }) {
   return (
-    <React.Fragment>
+    <div className="inputGroup">
       <input
         type="radio"
         name={group}
@@ -11,9 +11,7 @@ export default function RadioInputField({ input, onChange, group, name }) {
         checked={input === name}
         value={name}
       />
-      <label htmlFor={name + group}>
-        {name[0].toUpperCase() + name.substr(1)}
-      </label>
-    </React.Fragment>
+      <label htmlFor={name + group}>{name[0].toUpperCase() + name.substr(1)}</label>
+    </div>
   );
 }

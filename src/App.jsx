@@ -222,14 +222,24 @@ export class App extends Component {
     return (
       <React.Fragment>
         <div className="container">
+          <h1 className="title">Student's Alcohol Consumption</h1>
           <div className="form-row">
-            <div className="col-4">
-              <p>Student's sex</p>
+            <div className="col-6">
+              <p>Student's sex: </p>
               {this.radioButtonInputs(['male', 'female'], sex, 'sex')}
             </div>
 
-            <div className="col-4">
-              <label htmlFor="st_age">Student's age</label>
+            <div className="col-6">
+              <p>Address:</p>
+              {this.radioButtonInputs(['urban', 'rural'], address, 'address')}
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="col-6">
+              <label htmlFor="st_age" className="title">
+                Student's age:
+              </label>
               <input
                 type="number"
                 name="st_age"
@@ -241,135 +251,149 @@ export class App extends Component {
                 className="form-control"
               />
             </div>
-
-            <div className="col-4">
-              <p>Address</p>
-              {this.radioButtonInputs(['urban', 'rural'], address, 'address')}
+            <div className="col-6">
+              <label htmlFor="famsize" className="title">
+                Family size:
+              </label>
+              <input
+                type="number"
+                name="famsize"
+                id="famsize"
+                min="2"
+                value={famsize}
+                onChange={this.handleInput}
+                className="form-control"
+              />
             </div>
           </div>
 
-          <div>
-            <label htmlFor="famsize">Family size</label>
-            <input
-              type="number"
-              name="famsize"
-              id="famsize"
-              min="2"
-              value={famsize}
-              onChange={this.handleInput}
-            />
+          <div className="form-row">
+            <div className="col-6">
+              <p>Mother's education: </p>
+              <select value={medu} onChange={this.handleInput} id="medu" className="custom-select">
+                <option value="0">None</option>
+                <option value="1">Primary education (4th grade)</option>
+                <option value="2">5th to 9th grade</option>
+                <option value="3">Secondary education</option>
+                <option value="4">Higher education</option>
+              </select>
+            </div>
+
+            <div className="col-6">
+              <p>Father's education: </p>
+              <select value={fedu} onChange={this.handleInput} id="fedu" className="custom-select">
+                <option value="0">None</option>
+                <option value="1">Primary education (4th grade)</option>
+                <option value="2">5th to 9th grade</option>
+                <option value="3">Secondary education</option>
+                <option value="4">Higher education</option>
+              </select>
+            </div>
           </div>
 
-          <div>
-            <p>Parent's cohabitation status</p>
-            {this.radioButtonInputs(['together', 'apart'], pstatus, 'pstatus')}
+          <div className="form-row">
+            <div className="col-6">
+              <p>Parent's cohabitation status:</p>
+              {this.radioButtonInputs(['together', 'apart'], pstatus, 'pstatus')}
+            </div>
+
+            <div className="col-6">
+              <p>Guardian:</p>
+              {this.radioButtonInputs(['mother', 'father', 'other'], guardian, 'guardian')}
+            </div>
           </div>
 
-          <div>
-            <p>Mother's education: </p>
-            <select value={medu} onChange={this.handleInput} id="medu" className="custom-select">
-              <option value="0">None</option>
-              <option value="1">Primary education (4th grade)</option>
-              <option value="2">5th to 9th grade</option>
-              <option value="3">Secondary education</option>
-              <option value="4">Higher education</option>
-            </select>
+          <div className="form-row">
+            <div className="col-6">
+              <p>Home to school travel time:</p>
+              {this.radioButtonInputs(
+                ['<15min', '15min-30min', '30min-1h', '>1h'],
+                traveltime,
+                'traveltime',
+              )}
+            </div>
+
+            <div className="col-6">
+              <p>Weekly study time:</p>
+              {this.radioButtonInputs(['<2h', '2h-5h', '5h-10h', '>10h'], studytime, 'studytime')}
+            </div>
           </div>
 
-          <div>
-            <p>Father's education: </p>
-            <select value={fedu} onChange={this.handleInput} id="fedu" className="custom-select">
-              <option value="0">None</option>
-              <option value="1">Primary education (4th grade)</option>
-              <option value="2">5th to 9th grade</option>
-              <option value="3">Secondary education</option>
-              <option value="4">Higher education</option>
-            </select>
+          <div className="form-row">
+            <div className="col-4">
+              <p>Extra educational support:</p>
+              {this.radioButtonInputs(['yes', 'no'], schoolsup, 'schoolsup')}
+            </div>
+
+            <div className="col-4">
+              <p>Family educational support:</p>
+              {this.radioButtonInputs(['yes', 'no'], famsup, 'famsup')}
+            </div>
+
+            <div className="col-4">
+              <p>Extra paid classes:</p>
+              {this.radioButtonInputs(['yes', 'no'], paid, 'paid')}
+            </div>
           </div>
 
-          <div>
-            <p>Parent's cohabitation status</p>
-            {this.radioButtonInputs(['mother', 'father', 'other'], guardian, 'guardian')}
+          <div className="form-row">
+            <div className="col-4">
+              <p>Extra-curricular activities:</p>
+              {this.radioButtonInputs(['yes', 'no'], activities, 'activities')}
+            </div>
+            <div className="col-4">
+              <p>Attended nursery school:</p>
+              {this.radioButtonInputs(['yes', 'no'], nursery, 'nursery')}
+            </div>
+            <div className="col-4">
+              <p>Wants to take higher education:</p>
+              {this.radioButtonInputs(['yes', 'no'], higher, 'higher')}
+            </div>
           </div>
 
-          <div>
-            <p>Home to school travel time</p>
-            {this.radioButtonInputs(
-              ['<15min', '15min-30min', '30min-1h', '>1h'],
-              traveltime,
-              'traveltime',
-            )}
+          <div className="form-row">
+            <div className="col-6">
+              <p>Internet access at home:</p>
+              {this.radioButtonInputs(['yes', 'no'], internet, 'internet')}
+            </div>
+
+            <div className="col-6">
+              <p>With a romantic relationship:</p>
+              {this.radioButtonInputs(['yes', 'no'], romantic, 'romantic')}
+            </div>
           </div>
 
-          <div>
-            <p>Weekly study time</p>
-            {this.radioButtonInputs(['<2h', '2h-5h', '5h-10h', '>10h'], studytime, 'studytime')}
-          </div>
-
-          <div>
-            <label htmlFor="failures">Number of past class failures </label>
-            <input
-              type="number"
-              name="failures"
-              id="failures"
-              min="0"
-              max="3"
-              value={failures}
-              onChange={this.handleInput}
-            />
-          </div>
-
-          <div>
-            <p>Extra educational support</p>
-            {this.radioButtonInputs(['yes', 'no'], schoolsup, 'schoolsup')}
-          </div>
-
-          <div>
-            <p>Family educational support</p>
-            {this.radioButtonInputs(['yes', 'no'], famsup, 'famsup')}
-          </div>
-
-          <div>
-            <p>Extra paid classes within the course subject (Math or Portuguese)</p>
-            {this.radioButtonInputs(['yes', 'no'], paid, 'paid')}
-          </div>
-
-          <div>
-            <p>Extra-curricular activities</p>
-            {this.radioButtonInputs(['yes', 'no'], activities, 'activities')}
-          </div>
-
-          <div>
-            <p>Attended nursery school</p>
-            {this.radioButtonInputs(['yes', 'no'], nursery, 'nursery')}
-          </div>
-
-          <div>
-            <p>Wants to take higher education</p>
-            {this.radioButtonInputs(['yes', 'no'], higher, 'higher')}
-          </div>
-
-          <div>
-            <p>Internet access at home</p>
-            {this.radioButtonInputs(['yes', 'no'], internet, 'internet')}
-          </div>
-
-          <div>
-            <p>With a romantic relationship</p>
-            {this.radioButtonInputs(['yes', 'no'], romantic, 'romantic')}
-          </div>
-
-          <div>
-            <label htmlFor="absences">Number of school absences</label>
-            <input
-              type="number"
-              name="absences"
-              id="absences"
-              min="0"
-              max="93"
-              value={absences}
-              onChange={this.handleInput}
-            />
+          <div className="form-row">
+            <div className="col-6">
+              <label htmlFor="absences" className="title">
+                Number of school absences:
+              </label>
+              <input
+                type="number"
+                name="absences"
+                id="absences"
+                min="0"
+                max="93"
+                value={absences}
+                onChange={this.handleInput}
+                className="form-control"
+              />
+            </div>
+            <div className="col-6">
+              <label htmlFor="failures" className="title">
+                Number of past class failures:
+              </label>
+              <input
+                type="number"
+                name="failures"
+                id="failures"
+                min="0"
+                max="3"
+                value={failures}
+                onChange={this.handleInput}
+                className="form-control"
+              />
+            </div>
           </div>
         </div>
 
@@ -409,15 +433,19 @@ export class App extends Component {
             max={4}
             question="Current health status"
           />
-
-          <button onClick={this.fetchData}>Get Results</button>
         </div>
 
+        <div className="row">
+          <button onClick={this.fetchData}>Get Results</button>
+          {this.state.results && <button onClick={this.toggleResults}>Show Results</button>}
+        </div>
         <Loading isLoading={this.state.isFetching} />
-        {this.state.results && this.state.showResult && (
-          <Results results={this.state.results} close={this.toggleResults} />
-        )}
-        {this.state.results && <button onClick={this.toggleResults}>Show Results</button>}
+
+        <Results
+          show={this.state.results && this.state.showResult}
+          results={this.state.results}
+          close={this.toggleResults}
+        />
       </React.Fragment>
     );
   }
